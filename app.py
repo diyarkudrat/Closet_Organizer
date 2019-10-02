@@ -17,8 +17,22 @@ app = Flask(__name__)
 
 @app.route('/')
 def sneakers_index():
-
     return render_template('sneakers_index.html', sneakers=sneakers.find())
+
+@app.route('/sneakers/new')
+def sneaker_new():
+    return render_template('sneakers_new.html')
+
+@app.route('/sneakers', methods=['POST'])
+def sneaker_create():
+    sneaker = {
+            'name': request.form.get('name'),
+            'price': request.form.get('price'),
+            'photo': request.form.get('Photos').split()
+    }
+    sneakers.insert_one(sneaker)
+    return redirect(url_for('sneakers_index'))
+
 
 
 if __name__ == '__main__':
