@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a href='/'>Back to Home</a>
+
+<h1>{{ sneaker.name }}</h1>
+
+<h5>{{ sneaker.brand }}</h5>
+
+{% for photo in sneaker.photos %}
+    <img src='{{ photo }}' alt='{{ sneaker.name}} width='420' height='315'>
+{% endfor %}
+
+{% endblock %}

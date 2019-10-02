@@ -7,8 +7,8 @@
     <a href='/sneakers/new'>New Shoe</a>
 
     {% for sneaker in sneakers %}
-        <h2>{{ sneaker.name }}</h2>
-        <small>{{ sneaker.price }}</small>
+        <h2><a href='/sneakers/{{ sneaker._id }}'>{{ sneaker.name }}</a></h2>
+        <!-- <small>{{ sneaker.brand }}</small> -->
     {% endfor %}
 
 {% endblock %}

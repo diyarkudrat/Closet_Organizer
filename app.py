@@ -19,6 +19,11 @@ app = Flask(__name__)
 def sneakers_index():
     return render_template('sneakers_index.html', sneakers=sneakers.find())
 
+@app.route('/sneakers/<sneaker_id>')
+def sneaker_show(sneaker_id):
+    sneaker = sneakers.find_one({'_id': ObjectId(sneaker_id)})
+    return render_template('sneakers_show.html', sneaker = sneaker)
+
 @app.route('/sneakers/new')
 def sneaker_new():
     return render_template('sneakers_new.html')
@@ -27,11 +32,11 @@ def sneaker_new():
 def sneaker_create():
     sneaker = {
             'name': request.form.get('name'),
-            'price': request.form.get('price'),
+            'brand': request.form.get('brand'),
             'photo': request.form.get('Photos').split()
     }
-    sneakers.insert_one(sneaker)
-    return redirect(url_for('sneakers_index'))
+    sneaker_id = sneakers.insert_one(sneaker).inserted_id
+    return redirect(url_for('sneakers_show', sneaker_id=sneaker_id))
 
 
 
