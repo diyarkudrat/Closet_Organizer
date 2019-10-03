@@ -19,6 +19,11 @@ app = Flask(__name__)
 def sneakers_index():
     return render_template('sneakers_index.html', sneakers=sneakers.find())
 
+@app.route('/sneakers/<sneaker_id>/delete', methods = ['POST'])
+def sneakers_delete(sneaker_id):
+    sneakers.delete_one({'_id': ObjectId(playlist_id)})
+    return redirect(url_for('sneakers_index'))
+
 @app.route('/sneakers/<sneaker_id>', methods = ['POST'])
 def sneakers_update(sneaker_id):
     updated_sneaker = {
