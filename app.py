@@ -29,12 +29,13 @@ def sneakers_update(sneaker_id):
     updated_sneaker = {
         'name': request.form.get('name'),
         'brand': request.form.get('brand'),
-        'photo': request.form.get('photos'.split())
+        # FIX INSERT PHOTO
+        'photo': request.form.get('photos')
     }
     sneakers.update_one(
         {'_id': ObjectId(sneaker_id)},
         {'$set': updated_sneaker})
-    return redirect(url_for('playlists_show', sneaker_id=sneaker_id))
+    return redirect(url_for('sneakers_show', sneaker_id=sneaker_id))
 
 @app.route('/sneakers/<sneaker_id>/edit')
 def sneakers_edit(sneaker_id):
