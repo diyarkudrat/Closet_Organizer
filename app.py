@@ -19,6 +19,23 @@ app = Flask(__name__)
 def sneakers_index():
     return render_template('sneakers_index.html', sneakers=sneakers.find())
 
+@app.route('/sneakers/<sneaker_id>', methods = ['POST'])
+def sneakers_update(sneaker_id):
+    updated_sneaker = {
+        'name': request.form.get('name'),
+        'brand': request.form.get('brand'),
+        'photo': request.form.get('photos'.split())
+    }
+    sneakers.update_one(
+        {'_id': ObjectId(sneaker_id)},
+        {'$set': updated_sneaker})
+    return redirect(url_for('playlists_show', sneaker_id=sneaker_id))
+
+@app.route('/sneakers/<sneaker_id>/edit')
+def sneakers_edit(sneaker_id):
+    sneaker = sneakers.find_one({'_id': ObjectId(sneaker_id)})
+    return render_template('sneakers_edit.html', sneaker = sneaker)
+
 @app.route('/sneakers/<sneaker_id>')
 def sneaker_show(sneaker_id):
     sneaker = sneakers.find_one({'_id': ObjectId(sneaker_id)})

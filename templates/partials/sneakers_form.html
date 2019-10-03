@@ -1,0 +1,23 @@
+<fieldset>
+
+    <legend>Edit Information</legend>
+
+    <p>
+        <label for='sneaker-name'>Name</label><br>
+        <input id='sneaker-name' type='text' name='name' value='{{ sneaker.name }}'/>
+    </p>
+
+    <p>
+        <label for='brand'>Brand</label><br>
+        <input id='brand' type='text' name='brand' value='{{ sneaker.brand }}'/>
+    </p>
+
+    <p>
+        <label for='sneaker-photos'>Photo</label><br>
+        <textarea id='sneaker-photos' name='photos' rows='10'>{{ "/n".join(sneaker.photos) }}</<textarea name="name" rows="8" cols="80"></textarea>
+    </p>
+  </fieldset>
+
+  <p>
+      <button type='submit'>Save Sneaker</button>
+  </p>

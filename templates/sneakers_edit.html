@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method='POST' action='/sneakers'>
+<form method='POST' action='/sneakers/{{sneaker._id}}'>
     {% include 'partials/sneakers_form.html' %}
 </form>
 {% endblock %}
