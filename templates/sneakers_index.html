@@ -6,9 +6,18 @@
 
     <a href='/sneakers/new'>New Shoe</a>
 
-    {% for sneaker in sneakers %}
-        <h2><a href='/sneakers/{{ sneaker._id }}'>{{ sneaker.name }}</a></h2>
+    <div class='row'>
+        {% for sneaker in sneakers %}
+            <div class='card' style='width: 18rem;'>
+              <img class='card-img-top' src='static/bred4.jpg'>
+              <div class='card-body'>
+                <h5 class='card-title'><a href='/sneakers/{{ sneaker._id }}'>{{ sneaker.name }}</a></h5>
+                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                <small>{{ sneaker.brand }}</small>
+              </div>
+            </div>
         <!-- <small>{{ sneaker.brand }}</small> -->
     {% endfor %}
+    </div>
 
 {% endblock %}

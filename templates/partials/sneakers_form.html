@@ -2,23 +2,22 @@
 
     <legend>Edit Information</legend>
 
-    <p>
+    <div class='form-group'>
         <label for='sneaker-name'>Name</label><br>
-        <input id='sneaker-name' type='text' name='name' value='{{ sneaker.name }}'/>
-    </p>
+        <input class='form-control' id='sneaker-name' type='text' name='name' value='{{ sneaker.name }}'/>
+    </div>
 
-    <p>
-        <label for='brand'>Brand</label><br>
-        <input id='brand' type='text' name='brand' value='{{ sneaker.brand }}'/>
-    </p>
+    <div class='form-group'>
+        <label for='brand'>Brand</label<br>
+        <input class='form-control' id='brand' type='text' name='brand' value='{{ sneaker.brand }}'
+    </div>
 
-    <p>
-        <label for='sneaker-photos'>Photo</label><br>
-        <!-- Able to insert a photo of shoe -->
-        <textarea id='sneaker-photos' name='photos' rows='10'>{{ "/n".join(sneaker.photos) }}</textarea>
-    </p>
+    <div class='form-group'>
+        <label for='sneaker-photos'>Photos</label<br>
+        <textarea class='form-control' ide='sneaker-photos' name='photos' rows='10' />{{ "\n".join(sneaker.photos) }}</textarea>
+    </div>
   </fieldset>
 
-  <p>
+  <!-- <p>
       <button type='submit'>Save Sneaker</button>
-  </p>
+  </p> -->

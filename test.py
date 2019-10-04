@@ -54,19 +54,19 @@ class SneakerCentralTests(TestCase):
         self.assertEqual(result.status, '302 FOUND')
         mock_insert.assert_called_with(sample_sneaker)
 
-    # @mock.patch('pymongo.collection.Collection.update_one')
-    # def test_update_sneaker(self, mock_update):
-    #     result = self.client.post('/sneakers/{sample_sneaker_id}', data=sample_form_data)
-    #
-    #     self.assertEqual(result.status, '302 FOUND')
-    #     mock_update.assert_called_with({'_id': sample_sneaker_id}, {'$set': sample_sneaker})
+    @mock.patch('pymongo.collection.Collection.update_one')
+    def test_update_sneaker(self, mock_update):
+        result = self.client.post(f'/playlists/{sample_sneaker_id}', data=sample_form_data)
+
+        self.assertEqual(result.status, '302 FOUND')
+        mock_update.assert_called_with({'_id': sample_sneaker_id}, {'$set': sample_sneaker})
 
     @mock.patch('pymongo.collection.Collection.delete_one')
     def test_delete_sneaker(self, mock_delete):
         form_data = {'_method': 'DELETE'}
         result = self.client.post(f'/sneakers/{sample_sneaker_id}/delete', data=form_data)
         self.assertEqual(result.status, '302 FOUND')
-        mock_delete.assert_called_with({'._id': sample_sneaker_id})
+        mock_delete.assert_called_with({'_id': sample_sneaker_id})
 
 
 if __name__ == '__main__':

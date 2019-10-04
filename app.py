@@ -30,7 +30,7 @@ def sneakers_update(sneaker_id):
         'name': request.form.get('name'),
         'brand': request.form.get('brand'),
         # FIX INSERT PHOTO
-        'photo': request.form.get('photos')
+        'photo': request.form.get('photos').split()
     }
     sneakers.update_one(
         {'_id': ObjectId(sneaker_id)},
