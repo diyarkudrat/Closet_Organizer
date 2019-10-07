@@ -12,21 +12,14 @@ sneakers = db.sneakers
 app = Flask(__name__)
 
 
-# sneakers = [
-#     {'name': 'Air Jordan 4 Bred', 'brand': 'Air Jordan', 'price': '$190.00'},
-#     {'name': 'VaporMax Plus', 'brand': 'Nike', 'price': '$180.00'}
-# ]
-
 @app.route('/')
 def sneakers_index():
+    #Homepage
     return render_template('sneakers_index.html', sneakers=sneakers.find())
-
-@app.route('/sneakers/pricing')
-def sneakers_pricing():
-    return render_template('sneakers_pricing.html', sneakers=sneakers.find())
 
 @app.route('/sneakers/<sneaker_id>/delete', methods = ['POST'])
 def sneakers_delete(sneaker_id):
+    #Able to delete an item
     sneakers.delete_one({'_id': ObjectId(sneaker_id)})
     return redirect(url_for('sneakers_index'))
 
@@ -39,7 +32,7 @@ def sneakers_update(sneaker_id):
         'price': request.form.get('price'),
         'release_date': request.form.get('release_date'),
         # FIX INSERT PHOTO
-        'photo': request.form.get('photos').split()
+        'photo_url': request.form.get('photos')
     }
     sneakers.update_one(
         {'_id': ObjectId(sneaker_id)},
@@ -48,20 +41,24 @@ def sneakers_update(sneaker_id):
 
 @app.route('/sneakers/<sneaker_id>/edit')
 def sneakers_edit(sneaker_id):
+    #able to edit an item
     sneaker = sneakers.find_one({'_id': ObjectId(sneaker_id)})
     return render_template('sneakers_edit.html', sneaker = sneaker)
 
 @app.route('/sneakers/<sneaker_id>')
 def sneakers_show(sneaker_id):
+    #displays information of item user enters in
     sneaker = sneakers.find_one({'_id': ObjectId(sneaker_id)})
     return render_template('sneakers_show.html', sneaker = sneaker)
 
 @app.route('/sneakers/new')
 def sneaker_new():
+    #page where you create an item
     return render_template('sneakers_new.html', sneaker = {}, name = 'New Shoe')
 
 @app.route('/sneakers', methods=['POST'])
 def sneaker_create():
+    #inserts information entered in by user into the database
     sneaker = {
             'name': request.form.get('name'),
             'brand': request.form.get('brand'),

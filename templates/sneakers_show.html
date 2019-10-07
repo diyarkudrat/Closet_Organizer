@@ -6,28 +6,34 @@
 <div class='row'>
     <div class='col-sm-6 col-sm-offset-3'>
         <h1>{{ sneaker.name }}</h1>
+
+        <!-- Time stamp -->
         {% if sneaker.created_at %}
         <p class='text-muted'>Created on: {{ sneaker.created_at.strftime('%A, %d %B, %Y') }}
             at {{ sneaker.created_at.strftime('%I:%M %p') }}</p>
         {% endif %}
-        <img src='static/bred4.jpg'>
+
+        <img src='{{ sneaker.photo_url }}' height = auto width = "100%">
+
         <h2>{{ sneaker.brand }}</h2>
+
         <h6>{{ sneaker.colorway }}</h6>
+
         <h7>{{ sneaker.price }}</h7><br>
+
         <h7>Release Date: {{ sneaker.release_date }}</h7><br>
-        <!-- {% for photo in sneaker.photos %} -->
-        <!-- <div class='card'><div class='card-body'> -->
-        <!-- <img src='static/bred4.jpg' width='420' height='315'></img> -->
-        <!-- </div></div> -->
-        <!-- {% endfor %} -->
-        <!-- <p><a href='/sneakers/{{ sneaker._id }}/edit'>Edit</a></p> -->
+
         <a class="btn btn-outline-dark" href="/sneakers/{{ sneaker._id }}/edit" role="button">Edit</a>
 
         <p><form method='POST' action='/sneakers/{{ sneaker._id }}/delete'>
+
             <input type='hidden' name='_method' value='DELETE'>
             <button class='btn btn-outline-dark' type='submit'>Delete</button>
+
         </form></p>
+
     </div>
 </div>
+
 
 {% endblock %}

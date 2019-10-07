@@ -2,34 +2,36 @@
 
     <legend>Edit Information</legend>
 
+    <!-- Input name -->
     <div class='form-group'>
         <label for='sneaker-name'>Name</label><br>
         <input class='form-control' id='sneaker-name' type='text' name='name' value='{{ sneaker.name }}'/>
     </div>
 
+    <!-- Input Brand name -->
     <div class='form-group'>
         <label for='brand'>Brand</label<br>
         <input class='form-control' id='brand' type='text' name='brand' value='{{ sneaker.brand }}'
     </div>
 
+    <!-- input Colorway -->
     <div class='form-group'>
         <label for='colorway'>Colorway</label<br>
         <input class='form-control' id='colorway' type='text' name='colorway' value='{{ sneaker.colorway }}'
 
+    <!-- Input Price -->
     <div class='form-group'>
         <label for='price'>Price</label<br>
         <input class='form-control' id='price' type='text' name='price' value='{{ sneaker.price }}'
 
+    <!-- Input release date of shoe -->
     <div class='form-group'>
-        <label for='releas-date'>Release Date</label<br>
+        <label for='release-date'>Release Date</label<br>
         <input class='form-control' id='release_date' type='text' name='release_date' value='{{ sneaker.release_date }}'
 
+    <!-- Input photo URL -->
     <div class='form-group'>
-        <label for='sneaker-photos'>Photos</label<br>
-        <textarea class='form-control' id='sneaker-photos' name='photos' rows='10' />{{ "\n".join(sneaker.photos) }}</textarea>
+        <label for='sneaker-photos'>Photo URL</label<br>
+        <input class='form-control' id='sneaker-photos' type='text' name='photos' value='{{ sneaker.photo_url }}'' />{{ "\n".join(sneaker.photos) }}</input>
     </div>
   </fieldset>
-
-  <!-- <p>
-      <button type='submit'>Save Sneaker</button>
-  </p> -->
