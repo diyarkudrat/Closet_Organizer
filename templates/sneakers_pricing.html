@@ -3,6 +3,7 @@
 {% block content %}
 
     <h1>SneakerCentral</h1>
+    <h2>Pricing</h1>
 
     <!-- <a href='/sneakers/new'>New Shoe</a> -->
 
@@ -11,9 +12,9 @@
             <div class='card' style='width: 18rem;'>
               <img class='card-img-top' src='static/bred4.jpg'>
               <div class='card-body'>
-                <h5 class='card-title'><a href='/sneakers/{{ sneaker._id }}'>{{ sneaker.name }}</a></h5>
+                <h5 class='card-title'><a href='/sneakers/pricing'>{{ sneaker.name }}</a></h5>
                 <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                <small>{{ sneaker.brand }}</small>
+                <small>{{ sneaker.price }}</small>
               </div>
             </div>
         <!-- <small>{{ sneaker.brand }}</small> -->

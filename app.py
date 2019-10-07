@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from bson.objectid import ObjectId
 from pymongo import MongoClient
 import os
+from datetime import datetime
 
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/SneakerCentral')
 client = MongoClient(host=f'{host}?retryWrites=false')
@@ -20,6 +21,10 @@ app = Flask(__name__)
 def sneakers_index():
     return render_template('sneakers_index.html', sneakers=sneakers.find())
 
+@app.route('/sneakers/pricing')
+def sneakers_pricing():
+    return render_template('sneakers_pricing.html', sneakers=sneakers.find())
+
 @app.route('/sneakers/<sneaker_id>/delete', methods = ['POST'])
 def sneakers_delete(sneaker_id):
     sneakers.delete_one({'_id': ObjectId(sneaker_id)})
@@ -30,6 +35,9 @@ def sneakers_update(sneaker_id):
     updated_sneaker = {
         'name': request.form.get('name'),
         'brand': request.form.get('brand'),
+        'colorway': request.form.get('colorway'),
+        'price': request.form.get('price'),
+        'release_date': request.form.get('release_date'),
         # FIX INSERT PHOTO
         'photo': request.form.get('photos').split()
     }
@@ -57,8 +65,13 @@ def sneaker_create():
     sneaker = {
             'name': request.form.get('name'),
             'brand': request.form.get('brand'),
-            # 'photo': request.form.get('Photos').split()
+            'created_at': datetime.now(),
+            # 'photo': request.form.get('Photos').split(),
+            'colorway': request.form.get('colorway'),
+            'release_date': request.form.get('release_date'),
+            'price': request.form.get('price')
     }
+    print(sneaker)
     sneaker_id = sneakers.insert_one(sneaker).inserted_id
     return redirect(url_for('sneakers_show', sneaker_id=sneaker_id))
 
