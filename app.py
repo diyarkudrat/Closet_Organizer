@@ -4,14 +4,16 @@ from pymongo import MongoClient
 import os
 from datetime import datetime
 
-client = MongoClient()
-db = client.Streetwear
-streetwears = db.streetwears
 
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/SneakerCentral')
 client = MongoClient(host=f'{host}?retryWrites=false')
 db = client.get_default_database()
 sneakers = db.sneakers
+streetwears = db.streetwears
+
+db = client.get_default_database()
+sneakers = db.sneakers
+streetwears = db.streetwears
 
 app = Flask(__name__)
 
@@ -76,15 +78,20 @@ def sneaker_create():
     sneaker_id = sneakers.insert_one(sneaker).inserted_id
     return redirect(url_for('sneakers_show', sneaker_id=sneaker_id))
 
-@app.route('/streetwear')
+# streetwears = [
+#     { 'brand': 'Gucci' },
+#     { 'type': 'Shirt' }
+# ]
+
+@app.route('/sneakers/streetwears')
 def streetwears_index():
     return render_template('streetwears_index.html', streetwears=streetwears.find())
 
-@app.route('/streetwear/new')
+@app.route('/sneakers/streetwears/new')
 def streetwears_new():
     return render_template('streetwears_new.html')
 
-@app.route('/streetwear/submit', methods=['POST'])
+@app.route('/sneakers/streetwears/submit', methods=['POST'])
 def streetwears_submit():
     streetwear = {
         'brand': request.form.get('brand'),
@@ -94,6 +101,7 @@ def streetwears_submit():
     }
     streetwears.insert_one(streetwear)
     return redirect(url_for('streetwears_index'))
+
 
 
 

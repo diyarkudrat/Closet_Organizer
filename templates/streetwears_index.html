@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
     <h1>Streetwear</h1>
+
+
     {% for streetwear in streetwears %}
         <h2>{{ streetwear.brand }}</h2>
         <small>{{ streetwear.type }}</small>
+        <small>{{ streetwear.color }}</small>
+        <small>{{ streetwear.price }}</small>
     {% endfor %}
+
 {% endblock %}
