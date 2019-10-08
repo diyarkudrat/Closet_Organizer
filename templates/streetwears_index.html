@@ -6,7 +6,7 @@
 
 
     {% for streetwear in streetwears %}
-        <h2>{{ streetwear.brand }}</h2>
+        <h2><a href='/sneakers/streetwears/{{ streetwear._id }}'>{{ streetwear.brand }}</a></h2>
         <small>{{ streetwear.type }}</small>
         <small>{{ streetwear.color }}</small>
         <small>{{ streetwear.price }}</small>

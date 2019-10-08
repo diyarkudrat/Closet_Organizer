@@ -85,6 +85,7 @@ def sneaker_create():
 
 @app.route('/sneakers/streetwears')
 def streetwears_index():
+    # `print('!!!!!!!!!!')`
     return render_template('streetwears_index.html', streetwears=streetwears.find())
 
 @app.route('/sneakers/streetwears/new')
@@ -99,9 +100,15 @@ def streetwears_submit():
         'color': request.form.get('color'),
         'price': request.form.get('price')
     }
-    streetwears.insert_one(streetwear)
-    return redirect(url_for('streetwears_index'))
+    # print('!!!!!!!!')
+    streetwear_id = streetwears.insert_one(streetwear).inserted_id
+    print(streetwear_id)
+    return redirect(url_for('streetwears_index', streetwear_id=streetwear_id))
 
+@app.route('/sneakers/streetwears/<streetwear_id>')
+def streetwears_show(streetwear_id):
+    streetwear = streetwears.find_one({'_id': ObjectId(streetwear_id)})
+    return render_template('streetwears_show.html', streetwear=streetwear)
 
 
 
