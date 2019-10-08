@@ -6,6 +6,7 @@
 
   <div class='col-sm-6 col-sm-offset-3'>
       <form method='POST' action='/sneakers'>
+          <input type='hidden' name='_method' value='PUT'/>
           {% include 'partials/sneakers_form.html' %}
           <div class='form-group'>
               <button class='btn btn-primary' type='submit'>Save Sneaker</button>

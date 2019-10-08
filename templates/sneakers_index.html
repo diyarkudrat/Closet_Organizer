@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
 
     <h1>SneakerCentral</h1>
@@ -9,7 +10,7 @@
         <!-- Displays each item using bootstrap -->
         {% for sneaker in sneakers %}
 
-            <div class='card' style='width: 18rem;'>
+            <div class='card' style='width: 14rem;'>
 
               <img class='card-img-top' src='{{ sneaker.photo_url }}'>
 

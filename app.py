@@ -63,7 +63,7 @@ def sneaker_create():
             'name': request.form.get('name'),
             'brand': request.form.get('brand'),
             'created_at': datetime.now(),
-            # 'photo': request.form.get('Photos').split(),
+            'photo_url': request.form.get('photos'),
             'colorway': request.form.get('colorway'),
             'release_date': request.form.get('release_date'),
             'price': request.form.get('price')
@@ -71,6 +71,15 @@ def sneaker_create():
     print(sneaker)
     sneaker_id = sneakers.insert_one(sneaker).inserted_id
     return redirect(url_for('sneakers_show', sneaker_id=sneaker_id))
+
+streetwears = [
+    {'brand': 'Gucci', 'type': 'Shirt'},
+    {'brand': 'Louis Vuitton', 'type': 'Jacket'}
+]
+
+@app.route('/streetwear')
+def streetwears_index():
+    return render_template('streetwears_index.html', streetwears=streetwears)
 
 
 
