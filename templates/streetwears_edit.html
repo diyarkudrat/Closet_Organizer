@@ -1,7 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method='POST' action='/sneakers/streetwears/{{streetwear._id}}'>
-    {% include 'partials/streetwears_form.html' %}
-</form>
+
+<div class='row'>
+
+    <div class='col-sm-6 col-sm-offset-3'>
+        <form method='POST' action='/sneakers/streetwears/{{streetwear._id}}'>
+            <input type='hidden' name='_method' value='PUT'/>
+            {% include 'partials/streetwears_form.html' %}
+            <div class='form-group'>
+                <button class='btn btn-primary' type='submit'>Save Streetwear</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 {% endblock %}

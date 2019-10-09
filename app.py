@@ -101,7 +101,7 @@ def streetwears_submit():
         'size': request.form.get('size'),
         'color': request.form.get('color'),
         'price': request.form.get('price'),
-        'photo_url': request.form.get('phot_url')
+        'photo_url': request.form.get('photo_url')
     }
     # print('!!!!!!!!')
     streetwear_id = streetwears.insert_one(streetwear).inserted_id
@@ -138,6 +138,52 @@ def streetwears_update(streetwear_id):
 def streetwears_delete(streetwear_id):
     streetwears.delete_one({'_id': ObjectId(streetwear_id)})
     return redirect(url_for('streetwears_index'))
+
+@app.route('/search', methods=['POST'])
+def search():
+    searched_sneakers = sneakers.find() 
+    search = request.form.get('search')
+    search_items = []
+
+    for sneaker in searched_sneakers:
+        if search.lower() in sneaker['name'].lower():
+            search_items.append(sneaker)
+        elif search.lower() in sneaker['brand'].lower():
+            search_items.append(sneaker)
+        elif search.lower() in sneaker['price'].lower():
+            search_items.append(sneaker)
+        elif search.lower() in sneaker['colorway'].lower():
+            search_items.append(sneaker)
+        elif search.lower() in sneaker['release_date'].lower():
+            search_items.append(sneaker)
+        else:
+            print('No results')
+
+    return render_template('sneakers_index.html', sneakers=search_items)
+
+@app.route('/streetwears/search', methods = ['POST'])
+def streetwears_search():
+    searched_streetwears = streetwears.find()
+    search = request.form.get('search')
+    search_items = []
+
+    for streetwear in searched_streetwears:
+        if search.lower() in streetwear['name'].lower():
+            search_items.append(streetwear)
+        elif search.lower() in streetwear['brand'].lower():
+            search_items.append(streetwear)
+        elif search.lower() in streetwear['price'].lower():
+            search_items.append(streetwear)
+        elif search.lower() in streetwear['type'].lower():
+            search_items.append(streetwear)
+        elif search.lower() in streetwear['size'].lower():
+            search_items.append(streetwear)
+        else:
+            print('No results')
+
+    return render_template('streetwears_index.html', streetwears=search_items)
+
+
 
 
 

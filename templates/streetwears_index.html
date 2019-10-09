@@ -1,20 +1,32 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
 
     <h1>Streetwear</h1>
+
+    <!-- <form action= '/streetwears/search', method='POST'>
+        <input type="text" name="search" placeholder="search">
+        <button type="Search">Search</button>
+    </form> -->
 
     <div class='row'>
         <!-- Displays each item using bootstrap -->
         {% for streetwear in streetwears %}
 
-            <div class='card' style='width: 14rem;'>
+            <div class='card' style='width: 17rem;'>
 
-              <img class='card-img-top' src='{{ streetwear.photo_url }}'>
+              <span class="border"></span>
+              <span class="border-top"></span>
+              <span class="border-right"></span>
+              <span class="border-bottom"></span>
+              <span class="border-left"></span>
+
+              <img class='card-img-top' src='{{ streetwear.photo_url }}' height=auto width='100%'>
 
               <div class='card-body'>
                 <h5 class='card-title'><a href='/sneakers/streetwears/{{ streetwear._id }}'>{{ streetwear.name }}</a></h5>
-                <small>{{ streetwear.brand }}</small><br>
+                <small>{{ streetwear.brand }}</small>
                 <small>{{ streetwear.size }}</small>
 
               </div>
@@ -24,4 +36,5 @@
     {% endfor %}
 
     </div>
+
 {% endblock %}
