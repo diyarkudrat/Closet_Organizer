@@ -1,0 +1,23 @@
+<fieldset>
+    <legend>{{ title }}</legend>
+    <!-- TITLE -->
+    <p>
+        <label for='streetwear-brand'>Brand</label><br>
+        <input id='streetwear-brand' type='text' name='brand' value='{{ streetwear.brand }}'/>
+    </p>
+
+    <!-- DESCRIPTION -->
+    <p>
+        <label for='type'>Type of Clothing</label><br>
+        <input id='type' type='text' name='type' value='{{ streetwear.type }}' />
+    </p>
+
+    <p>
+        <label for='price'>Price</label><br>
+        <input id='price' type='text' name='price' value='{{ streetwear.price }}'/>
+
+</fieldset>
+
+<p>
+    <button type='submit'>Save Item</button>
+</p>

@@ -2,32 +2,6 @@
 
 {% block content %}
 <form method='POST' action='/sneakers/streetwears/submit'>
-    <fieldset>
-    <legend>Add Streetwear</legend>
-    <!-- TITLE -->
-    <p>
-        <label for='brand'>Brand</label><br>
-        <input type='text' name='brand' />
-    </p>
-    <p>
-        <label for='type'>Clothing Type</label><br>
-        <input type='text' name='type' />
-    </p>
-
-    <p>
-        <label for='color'>Color</label><br>
-        <input type='text' name='color' />
-    </p>
-
-    <p>
-        <label for='price'>Price</label><br>
-        <input type='text' name='price' />
-    </p>
-    </fieldset>
-
-    <!-- BUTTON -->
-    <p>
-        <button type='submit'>Save Item</button>
-    </p>
+    {% include 'partials/streetwears_form.html' %}
 </form>
 {% endblock %}

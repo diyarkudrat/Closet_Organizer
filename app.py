@@ -90,7 +90,7 @@ def streetwears_index():
 
 @app.route('/sneakers/streetwears/new')
 def streetwears_new():
-    return render_template('streetwears_new.html')
+    return render_template('streetwears_new.html', streetwear={}, title='New Streetwear')
 
 @app.route('/sneakers/streetwears/submit', methods=['POST'])
 def streetwears_submit():
@@ -109,6 +109,29 @@ def streetwears_submit():
 def streetwears_show(streetwear_id):
     streetwear = streetwears.find_one({'_id': ObjectId(streetwear_id)})
     return render_template('streetwears_show.html', streetwear=streetwear)
+
+@app.route('/sneakers/streetwears/<streetwear_id>/edit')
+def streetwears_edit(streetwear_id):
+    streetwear = streetwears.find_one({'_id': ObjectId(streetwear_id)})
+    return render_template('streetwears_edit.html', streetwear=streetwear, title='Edit Streetwear')
+
+@app.route('/sneakers/streetwears/<streetwear_id>', methods=['POST'])
+def streetwears_update(streetwear_id):
+    updated_streetwear = {
+        'brand': request.form.get('brand'),
+        'type': request.form.get('type'),
+        'price': request.form.get('price')
+    }
+    streetwears.update_one(
+        {'_id': ObjectId(streetwear_id)},
+        {'$set': updated_streetwear}
+    )
+    return redirect(url_for('streetwears_show', streetwear_id=streetwear_id))
+
+@app.route('/sneakers/streetwears/<streetwear_id>/delete', methods=['POST'])
+def streetwears_delete(streetwear_id):
+    streetwears.delete_one({'_id': ObjectId(streetwear_id)})
+    return redirect(url_for('streetwears_index'))
 
 
 

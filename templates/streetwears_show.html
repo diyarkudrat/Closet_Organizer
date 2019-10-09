@@ -3,4 +3,11 @@
 {% block content %}
 <h1>{{ streetwear.brand }}</h1>
 <h2>{{ streetwear.type }}</h2>
+
+<p><a href='/sneakers/streetwears/{{ streetwear._id }}/edit'>Edit</a></p>
+
+<p><form method='POST' action='/sneakers/streetwears/{{ streetwear._id }}/delete'>
+    <button type='submit'>Delete</button>
+</form></p>
+
 {% endblock %}
