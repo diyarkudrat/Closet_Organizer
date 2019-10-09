@@ -95,10 +95,13 @@ def streetwears_new():
 @app.route('/sneakers/streetwears/submit', methods=['POST'])
 def streetwears_submit():
     streetwear = {
+        'name': request.form.get('name'),
         'brand': request.form.get('brand'),
         'type': request.form.get('type'),
+        'size': request.form.get('size'),
         'color': request.form.get('color'),
-        'price': request.form.get('price')
+        'price': request.form.get('price'),
+        'photo_url': request.form.get('phot_url')
     }
     # print('!!!!!!!!')
     streetwear_id = streetwears.insert_one(streetwear).inserted_id
@@ -118,9 +121,12 @@ def streetwears_edit(streetwear_id):
 @app.route('/sneakers/streetwears/<streetwear_id>', methods=['POST'])
 def streetwears_update(streetwear_id):
     updated_streetwear = {
+        'name': request.form.get('name'),
         'brand': request.form.get('brand'),
         'type': request.form.get('type'),
-        'price': request.form.get('price')
+        'size': request.form.get('size'),
+        'price': request.form.get('price'),
+        'photo_url': request.form.get('photo_url')
     }
     streetwears.update_one(
         {'_id': ObjectId(streetwear_id)},

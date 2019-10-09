@@ -2,6 +2,10 @@
     <legend>{{ title }}</legend>
     <!-- TITLE -->
     <p>
+        <label for='streetwear-name'>Name</label><br>
+        <input id='streetwear-name' type='text' name='name' value='{{ streetwear.name }}'
+    </p>
+    <p>
         <label for='streetwear-brand'>Brand</label><br>
         <input id='streetwear-brand' type='text' name='brand' value='{{ streetwear.brand }}'/>
     </p>
@@ -13,8 +17,21 @@
     </p>
 
     <p>
+        <label for='size'>Size</label><br>
+        <input id='size' type='text' name='size' value='{{ streetwear.size }}' />
+    </p>
+
+    <!-- PRICE -->
+    <p>
         <label for='price'>Price</label><br>
         <input id='price' type='text' name='price' value='{{ streetwear.price }}'/>
+    </p>
+
+    <!-- PHOTO -->
+    <p>
+        <label for='photo_url'>Photo URL</label><br>
+        <input id='photo_url' type='text' name='photo_url' value='{{ streetwear.photo_url }}'/>
+    </p>
 
 </fieldset>
 

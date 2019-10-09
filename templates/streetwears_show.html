@@ -1,8 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{ streetwear.brand }}</h1>
-<h2>{{ streetwear.type }}</h2>
+
+
+
+<h1>{{ streetwear.name}}</h1><br>
+
+<a href='/sneakers/streetwears'>Back to Streetwear</a><br>
+
+<img src='{{ streetwear.photo_url }}' height = auto width = "30%">
+
+<h2>{{ streetwear.brand }}</h2><br>
+
+<h3>{{ streetwear.type }}</h3><br>
+<h5>Size: {{ streetwear.size }}</h3><br>
+<h5>{{ streetwear.price }}</h5>
 
 <p><a href='/sneakers/streetwears/{{ streetwear._id }}/edit'>Edit</a></p>
 

@@ -4,12 +4,24 @@
 
     <h1>Streetwear</h1>
 
+    <div class='row'>
+        <!-- Displays each item using bootstrap -->
+        {% for streetwear in streetwears %}
 
-    {% for streetwear in streetwears %}
-        <h2><a href='/sneakers/streetwears/{{ streetwear._id }}'>{{ streetwear.brand }}</a></h2>
-        <small>{{ streetwear.type }}</small>
-        <small>{{ streetwear.color }}</small>
-        <small>{{ streetwear.price }}</small>
+            <div class='card' style='width: 14rem;'>
+
+              <img class='card-img-top' src='{{ streetwear.photo_url }}'>
+
+              <div class='card-body'>
+                <h5 class='card-title'><a href='/sneakers/streetwears/{{ streetwear._id }}'>{{ streetwear.name }}</a></h5>
+                <small>{{ streetwear.brand }}</small><br>
+                <small>{{ streetwear.size }}</small>
+
+              </div>
+
+            </div>
+
     {% endfor %}
 
+    </div>
 {% endblock %}
