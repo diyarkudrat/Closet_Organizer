@@ -2,24 +2,37 @@
 
 {% block content %}
 
+<a class="btn btn-outline-dark" href="/" role="button">Streetwear</a>
+<div class='row'>
+    <div class='col-sm-6 col-sm-offset-3'>
+        <h1>{{ streetwear.name }}</h1>
 
+        <!-- Time stamp -->
+        {% if streetwear.created_at %}
+        <p class='text-muted'>Created on: {{ streetwear.created_at.strftime('%A, %d %B, %Y') }}
+            at {{ streetwear.created_at.strftime('%I:%M %p') }}</p>
+        {% endif %}
 
-<h1>{{ streetwear.name}}</h1><br>
+        <img src='{{ streetwear.photo_url }}' height = auto width = "100%">
 
-<a href='/sneakers/streetwears'>Back to Streetwear</a><br>
+        <h2>{{ streetwear.brand }}</h2>
 
-<img src='{{ streetwear.photo_url }}' height = auto width = "30%">
+        <h6>{{ streetwear.type }}</h6>
 
-<h2>{{ streetwear.brand }}</h2><br>
+        <h7>{{ streetwear.size }}</h7><br>
 
-<h3>{{ streetwear.type }}</h3><br>
-<h5>Size: {{ streetwear.size }}</h3><br>
-<h5>{{ streetwear.price }}</h5>
+        <h7>{{ streetwear.price }}</h7><br>
 
-<p><a href='/sneakers/streetwears/{{ streetwear._id }}/edit'>Edit</a></p>
+        <a class="btn btn-outline-dark" href="/sneakers/streetwears/{{ streetwear._id }}/edit" role="button">Edit</a>
 
-<p><form method='POST' action='/sneakers/streetwears/{{ streetwear._id }}/delete'>
-    <button type='submit'>Delete</button>
-</form></p>
+        <p><form method='POST' action='/sneakers/streetwears/{{ streetwear._id }}/delete'>
+
+            <input type='hidden' name='_method' value='DELETE'>
+            <button class='btn btn-outline-dark' type='submit'>Delete</button>
+
+        </form></p>
+
+    </div>
+</div>
 
 {% endblock %}

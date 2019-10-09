@@ -5,10 +5,32 @@
 
     <h1>Streetwear</h1>
 
-    <!-- <form action= '/streetwears/search', method='POST'>
-        <input type="text" name="search" placeholder="search">
-        <button type="Search">Search</button>
-    </form> -->
+    <!-- From w3schools.com for animation -->
+    <style>
+    input[type=text] {
+      width: 120px;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      font-size: 15px;
+      background-color: white;
+      background-image: url('searchicon.png');
+      background-position: 10px 10px;
+      background-repeat: no-repeat;
+      padding: 5px 5px 5px 20px;
+      -webkit-transition: width 0.4s ease-in-out;
+      transition: width 0.4s ease-in-out;
+    }
+
+    input[type=text]:focus {
+      width: 100%;
+    }
+    </style>
+
+    <form action='/streetwears/search', method='POST'>
+      <input type="text" name="search" placeholder="Search">
+    </form>
+
 
     <div class='row'>
         <!-- Displays each item using bootstrap -->
@@ -16,17 +38,11 @@
 
             <div class='card' style='width: 17rem;'>
 
-              <span class="border"></span>
-              <span class="border-top"></span>
-              <span class="border-right"></span>
-              <span class="border-bottom"></span>
-              <span class="border-left"></span>
-
               <img class='card-img-top' src='{{ streetwear.photo_url }}' height=auto width='100%'>
 
               <div class='card-body'>
                 <h5 class='card-title'><a href='/sneakers/streetwears/{{ streetwear._id }}'>{{ streetwear.name }}</a></h5>
-                <small>{{ streetwear.brand }}</small>
+                <small>{{ streetwear.brand }}</small><br>
                 <small>{{ streetwear.size }}</small>
 
               </div>

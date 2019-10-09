@@ -101,6 +101,7 @@ def streetwears_submit():
         'size': request.form.get('size'),
         'color': request.form.get('color'),
         'price': request.form.get('price'),
+        'created_at': datetime.now(),
         'photo_url': request.form.get('photo_url')
     }
     # print('!!!!!!!!')
@@ -141,7 +142,7 @@ def streetwears_delete(streetwear_id):
 
 @app.route('/search', methods=['POST'])
 def search():
-    searched_sneakers = sneakers.find() 
+    searched_sneakers = sneakers.find()
     search = request.form.get('search')
     search_items = []
 
