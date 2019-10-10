@@ -7,13 +7,19 @@ sample_streetwear_id = ObjectId('5d55cffc4a3d4031f42827a3')
 sample_streetwear = {
     'brand': 'Gucci',
     'type': 'Shirt',
-    'price': '$100.00'
+    'price': '$100.00',
+    'type': 'Shirt',
+    'size': 'large',
+    'color': 'white',
 }
 
 sample_form_data = {
     'brand': sample_streetwear['brand'],
     'type': sample_streetwear['type'],
-    'price': sample_streetwear['price']
+    'price': sample_streetwear['price'],
+    'type': sample_streetwear['type'],
+    'size': sample_streetwear['size'],
+    'color': sample_streetwear['color']
 }
 
 class StreetwearsTests(TestCase):

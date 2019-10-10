@@ -1,11 +1,18 @@
 from unittest import TestCase, main as unittest_main, mock
 from app import app
 from bson.objectid import ObjectId
+from datetime import datetime
 
 sample_sneaker_id = ObjectId('666f6f2d6261722d71757578')
 sample_sneaker = {
     'name': 'Bred 4',
-    'brand': 'Jordan'
+    'brand': 'Jordan',
+    'created_at': datetime.now(),
+    'photo_url': None,
+    'colorway': None,
+    'release_date': None,
+    'price': None
+
 }
 
 sample_form_data = {
